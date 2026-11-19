@@ -11,7 +11,13 @@ export { STRUCT_LIBRARY_ROWS } from "./library-rows";
 export { STRUCTURAL_CLASSES } from "./classes";
 export { STRUCTURAL_FIELD_PROVIDER } from "./fields";
 export { STRUCT_CLASSES, STRUCT_PARAMETER_SET, GRAVITY_LOAD_SERVICE, GRAVITY_LOAD_SERVICE_ID, LOAD_KEYS, LOAD_PATH_ADAPTER_ID } from "./catalog";
-export { WIDE_FLANGE_SECTIONS, sectionById, type WideFlangeSection } from "./sections";
+export {
+  AISC_TABLE_1_1,
+  W_SHAPE_CATALOGUE_REVIEW,
+  WIDE_FLANGE_SECTIONS,
+  sectionById,
+  type WideFlangeSection,
+} from "./sections";
 export { LIVE_LOAD_RATES, LIVE_LOAD_RATE_KEY, LIVE_LOAD_RATE_TARGET, ROOF_ORDINARY_USE, STRUCT_RATE_VALUES, STRUCT_SPACE_USES, liveLoadRate, type LiveLoadRate } from "./live-loads";
 export { simpleBeam, simpleBeamCalcInputSchema, SimpleBeamInputError, SIMPLE_BEAM_CALC_ID, SIMPLE_BEAM_CALC_VERSION, type PointLoad, type SimpleBeamInput, type SimpleBeamResult, type SimpleBeamCalcInput } from "./simple-beam";
 export { SIMPLE_BEAM_CALC, SIMPLE_BEAM_METHOD, runSimpleBeam } from "./calc";

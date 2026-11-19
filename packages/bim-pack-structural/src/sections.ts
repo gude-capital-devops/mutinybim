@@ -1,10 +1,16 @@
 import { qty, type Quantity } from "@permitzip/bim-units";
 
 /**
- * A small wide-flange catalogue as type data. Values are the AISC Steel
- * Construction Manual, 16th Edition, Table 1-1 (W-shapes) dimensions and
- * properties, transcribed and not yet checked against the printed table
- * (`verified: false`, like an unverified space-use row).
+ * A small wide-flange catalogue as type data. Values are intended to match
+ * the AISC Steel Construction Manual, 16th Edition, Table 1-1 (W-shapes)
+ * dimensions and properties.
+ *
+ * **Verification status:** every row ships with `verified: false`. The
+ * numbers are a working transcription awaiting licensed review against the
+ * printed Manual. Do not flip `verified` to `true` without a PE (Phillip
+ * Dixon, PE (Civil), for Gude Capital work) confirming each row against
+ * Table 1-1. Anthony Gude is not a PE. Do not paste Manual prose into the
+ * repo (copyright); citation of table and edition only is fine.
  */
 
 export interface WideFlangeSection {
@@ -23,7 +29,22 @@ export interface WideFlangeSection {
   readonly verified: boolean;
 }
 
-const AISC_TABLE_1_1 = "AISC Steel Construction Manual, 16th Ed., Table 1-1";
+/** Governing citation for every shipped W-shape row (edition + table only; no Manual prose). */
+export const AISC_TABLE_1_1 = "AISC Steel Construction Manual, 16th Ed., Table 1-1";
+
+/**
+ * Catalogue readiness for reviewers. Rows stay unverified until a licensed
+ * professional confirms each property against the printed Manual.
+ */
+export const W_SHAPE_CATALOGUE_REVIEW = Object.freeze({
+  source: AISC_TABLE_1_1,
+  /** All shipped rows must stay false until PE confirmation. */
+  verified: false as const,
+  needsLicensedReview: true as const,
+  reviewerRole: "Phillip Dixon, PE (Civil)",
+  note:
+    "needs licensed review — compare each row’s depth, weight, area, Ix and Sx to AISC Manual 16th Ed. Table 1-1 before setting verified: true.",
+});
 
 function w(id: string, depthIn: number, weightPlf: number, areaIn2: number, ixIn4: number, sxIn3: number): WideFlangeSection {
   return Object.freeze({
